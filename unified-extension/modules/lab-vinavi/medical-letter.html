@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medical Condition Letter - Vinavi Helper</title>
+  <link rel="stylesheet" href="styles/medical-letter.css">
+</head>
+<body>
+  <div class="letter-container">
+    <div class="letter-toolbar">
+      <button id="backBtn" class="toolbar-btn">← Back to Dashboard</button>
+      <div class="toolbar-actions">
+        <button id="exportWordBtn" class="toolbar-btn primary">📄 Export Word</button>
+      </div>
+    </div>
+
+    <!-- Patient Search Bar -->
+    <div class="patient-search-bar">
+      <div class="search-wrapper">
+        <svg class="search-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor">
+          <circle cx="9" cy="9" r="7"/>
+          <path d="M14 14l5 5"/>
+        </svg>
+        <input 
+          type="text" 
+          id="patientSearchInput" 
+          placeholder="Search patient by ID, Name, NIC, or Phone Number - Press Enter to search" 
+          autocomplete="off">
+        <button id="searchPatientBtn" class="search-btn">Search</button>
+      </div>
+      <div id="searchStatus" class="search-status"></div>
+    </div>
+
+    <div class="letter-editor">
+      <div class="letter-preview" id="letterPreview">
+        <!-- Header Image -->
+        <div class="letter-header" id="letterHeader">
+          <img id="headerImage" src="" alt="Hospital Header" style="display: none; width: 100%; max-height: 150px; object-fit: contain;">
+          <div id="defaultHeader" class="default-header">
+            <h1>HULHUMALE HOSPITAL</h1>
+          </div>
+        </div>
+
+        <!-- Date (Top Right) -->
+        <div class="date-section">
+          <label>Date:</label>
+          <input type="date" id="letterDate" class="detail-input date-input">
+        </div>
+
+        <!-- Letter Subject -->
+        <div class="letter-title">
+          <h2>TO WHOM IT MAY CONCERN</h2>
+          <!-- Subtitle removed per requirements -->
+        </div>
+
+        <!-- Patient Details -->
+        <div class="patient-details-section">
+          <h3 class="editor-only">Patient Information</h3>
+          <div class="detail-row">
+            <label>Name:</label>
+            <input type="text" id="patientName" class="detail-input" placeholder="Patient name will auto-fill">
+          </div>
+          <div class="detail-row">
+            <label>ID Number:</label>
+            <input type="text" id="patientId" class="detail-input" placeholder="ID card will auto-fill">
+          </div>
+          <div class="detail-row">
+            <label>Age / Sex:</label>
+            <input type="text" id="patientAgeSex" class="detail-input" placeholder="Age/Sex will auto-fill">
+          </div>
+          <div class="detail-row">
+            <label>Address:</label>
+            <input type="text" id="patientAddress" class="detail-input" placeholder="Address will auto-fill">
+          </div>
+        </div>
+
+        <!-- Letter Body -->
+        <div class="letter-body-section">
+          <div class="letter-section-sep">
+            <div class="letter-section-line"></div>
+            <div class="letter-section-title">Details</div>
+          </div>
+          <textarea id="letterBody" class="letter-textarea" placeholder="Enter medical condition explanation here...
+
+Example:
+This is to certify that the above-named patient is under my care for [condition]. The patient presented with [symptoms] and has been diagnosed with [diagnosis].
+
+Current treatment includes [treatment plan]. The patient is advised to [recommendations].
+
+The patient requires [specific requirements/accommodations if any]."></textarea>
+        </div>
+
+  <div class="letter-closing">
+    <p>Kindly do the needful</p>
+    <p>Thank you</p>
+  </div>
+
+        <!-- Doctor Details -->
+        <div class="doctor-details-section editor-only">
+          <h3>Physician Information (Editor Only)</h3>
+          <div class="detail-row">
+            <label>Doctor Name:</label>
+            <input type="text" id="doctorName" class="detail-input" readonly>
+          </div>
+          <div class="detail-row">
+            <label>Doctor Code:</label>
+            <input type="text" id="doctorCode" class="detail-input" readonly>
+          </div>
+          <div class="detail-row">
+            <label>Specialty:</label>
+            <input type="text" id="doctorSpecialty" class="detail-input" placeholder="e.g., Nephrology">
+          </div>
+          <div class="detail-row">
+            <label>Hospital:</label>
+            <input type="text" id="hospitalName" class="detail-input" value="Hulhumale Hospital" readonly>
+          </div>
+        </div>
+
+        <!-- Signature Area -->
+        <div class="signature-section">
+          <div class="signature-line">
+            <div class="sig-line"></div>
+            <p id="signatureName" class="signature-name">Dr. [Name]</p>
+            <p id="signatureSpecialty" class="signature-specialty">[Specialty]</p>
+            <p class="signature-hospital">Hulhumale Hospital</p>
+          </div>
+        </div>
+
+        <!-- Footer Image -->
+        <div class="letter-footer" id="letterFooter">
+          <img id="footerImage" src="" alt="Hospital Footer" style="display: none; width: 100%;">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loading Overlay -->
+  <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+    <div class="loading-spinner">
+      <div class="spinner"></div>
+      <p id="loadingMessage">Processing...</p>
+    </div>
+  </div>
+
+  <script src="../../vendor/jszip.min.js"></script>
+  <script src="scripts/medical-letter.js"></script>
+</body>
+</html>
